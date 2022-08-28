@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+</head>
+<body>
+    <div>
+        <h1>update Student information</h1>
+        <form action="#" th:action="@{/saveStudent}" th:object = "${student}" , method="POST">
+            <Fieldset>
+                <input type="hidden" th:field="*{studentId}">
+            </Fieldset>
+
+            <Fieldset> 
+                <label>Enter Student Name</label>
+                <input type="text" th:field="*{studentFirstName}" placeholder="first name"> 
+                </Fieldset>
+    
+                <Fieldset>
+                <label>Enter Student Last Name</label>
+                <input type="text" th:field="*{studentLastName}" placeholder="Last name "> 
+                </Fieldset>
+    
+                <Fieldset>
+                <label>Enter Student Address</label>
+                <input type="text" th:field="*{studentAddress}" placeholder=" Address "> 
+                </Fieldset>
+    
+                <Fieldset>
+                <label>Enter Student Email</label>
+                <input type="text" th:field="*{studentEmail}" placeholder="email"> 
+                </Fieldset>
+    
+                <Fieldset>
+                <label>Enter Student Password</label>
+                <input type="text" th:field="*{studentPassword}" placeholder="email"> 
+                </Fieldset>
+                
+            <button type="submit"> update Student</button> 
+        </form>
+
+    </div>
+</body>
+</html>

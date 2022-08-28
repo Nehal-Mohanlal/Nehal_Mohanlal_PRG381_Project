@@ -24,10 +24,15 @@
                     <td th:text = "${student.studentLastName}" style="border: 1px solid black;"></td>
                     <td th:text = "${student.studentAddress}" style="border: 1px solid black;"></td>
                     <td th:text = "${student.studentEmail}" style="border: 1px solid black;"></td>
+
+                    <td>
+                        <a th:href = "@{/updateStudent/{id}(id=${student.studentId})}" class="btn btn-primary">Update</a> 
+                        <a th:href = "@{/deleteStudent/{id}(id=${student.studentId})}" class="btn btn-danger">delete</a> 
+                   </td>
                 </tr>
             </tbody>
         </table>
-      
+        <a th:href="@{/newEmpForm}" class="btn btn-primary"> Add new Student </a>
         </div>
 </body>
 </html>

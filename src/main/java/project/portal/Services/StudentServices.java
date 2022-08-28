@@ -15,7 +15,31 @@ public class StudentServices {
     @Autowired
     private StudentRepository stuRepo; 
 
+    // display all students
     public List<StudentModel> getAllStudents(){
         return stuRepo.findAll(); 
+    }
+
+    // add student
+    public void addStudent(StudentModel student){
+        this.stuRepo.save(student); 
+    }
+
+    // helper function 
+    public StudentModel getStudentByID(Long id){
+        Optional<StudentModel> o1 = stuRepo.findById(id); 
+        StudentModel emp = null; 
+        if(o1.isPresent()){
+            emp = o1.get(); 
+        }else{
+            throw new RuntimeException("Employee is not found with id + " + id); 
+        }
+        return emp; 
+    }
+
+    // delete student by ID
+    public void deleteStudent(Long id){
+        this.stuRepo.deleteById(id); 
+        
     }
 }
