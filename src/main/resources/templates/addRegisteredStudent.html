@@ -9,37 +9,45 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <nav class="navbar navbar-expand-lg bg-light ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Belgium Campus Student Portal</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+    <div class="justify-content-center text-center p-3">
         <h1>Add new Student</h1>
         <form action="#" th:action="@{/saveReg}" th:object = "${regStudent}" , method="POST">
-            <Fieldset> 
+            <Fieldset class="p-1"> 
             <label>Enter registred Student Name</label>
             <input type="text" th:field="*{regStudentFirstName}" placeholder="first name"> 
             </Fieldset>
 
-            <Fieldset>
+            <Fieldset class="p-1">
             <label>Enter registered Student Last Name</label>
             <input type="text" th:field="*{regStudentLastName}" placeholder="Last name "> 
             </Fieldset>
 
-            <Fieldset>
+            <Fieldset class="p-1">
             <label>Enter registered Student Email</label>
             <input type="text" th:field="*{regStudentEmail}" placeholder=" email "> 
             </Fieldset>
 
-            <Fieldset>
+            <Fieldset class="p-1">
             <label>Enter registred Student Password</label>
-            <input type="text" th:field="*{regStudentPassword}" placeholder="password"> 
+            <input type="password" th:field="*{regStudentPassword}" placeholder="password"> 
             </Fieldset>
 
-            <Fieldset>
+            <Fieldset class="p-1">
             <label>Enter registered Student Course name</label>
             <input type="text" th:field="*{regCourseName}" placeholder="Course name"> 
             </Fieldset>
 
             <button type="submit"> Add Student</button> 
         </form>
-
+        <a th:href="@{/}" class="btn btn-dark"> Sign Out </a>
     </div>
 </body>
 </html>

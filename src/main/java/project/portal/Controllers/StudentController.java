@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import project.portal.Models.StudentModel;
-import project.portal.Models.AdminModel;
+//import project.portal.Models.AdminModel;
 import project.portal.Services.*;
-import project.portal.Services.AdminServices;
+//import project.portal.Services.AdminServices;
 
 import project.portal.Services.RegisterServices;
 import project.portal.Models.RegisterModel;
@@ -32,27 +32,31 @@ public class StudentController {
     @Autowired
     private Aservices aService; 
 
+    @GetMapping(value = "/")
     
-
-    @GetMapping("/")
-    public String showStudents(Model model) {
-        model.addAttribute("allStudents", stuService.getAllStudents());
-        return "index";
+    public String getMenu(){
+        return "index"; 
     }
 
-    @GetMapping(value="/login")
+    @GetMapping("/viewStudents")
+    public String showStudents(Model model) {
+        model.addAttribute("allStudents", stuService.getAllStudents());
+        return "viewStudents";
+    }
+
+    @GetMapping(value="/stulogin")
     public String login(Model model){
         model.addAttribute("allStudents", stuService.getAllStudents());
-        return "login"; 
+        return "stulogin"; 
     }
 
     @PostMapping("/valStudent")
         public String Valuser(){
 
-            return "redirect:/"; 
+            return "menu"; 
         }
 
-    @GetMapping(value = "/newEmpForm")
+    @GetMapping(value = "/newStudent")
     public String addNewStudent(Model model) {
         StudentModel s1 = new StudentModel();
         model.addAttribute("student", s1);

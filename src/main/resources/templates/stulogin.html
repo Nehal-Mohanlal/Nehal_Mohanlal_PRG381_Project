@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Student Portal</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light ">
@@ -17,26 +17,19 @@
           </button>
         </div>
       </nav>
+
     <div class="justify-content-center text-center p-3">
-        <h1>Student List</h1> 
-        <table style="border: 1px solid black;" class="table table-striped table-responsive-md">
-            <thead style="border: 1px solid black;">
-                <th>Admin name</th>
-                <th>Admin Phone</th>
-            </thead>
-            <tbody >
-                <tr th:each="admin: ${allAdmins}" >
-                    <td th:text = "${admin.aName}" style="border: 1px solid black;"></td>
-                    <td th:text = "${admin.aPhone}" style="border: 1px solid black;"></td>
-                    
-                    <td>
-                        <a th:href = "@{/updateA/{id}(id=${admin.aId})}" class="btn btn-dark bg-info">Update</a> 
-                        <a th:href = "@{/deleteA/{id}(id=${admin.aId})}" class="btn btn-danger">delete</a> 
-                   </td>
-                </tr>
-            </tbody>
-        </table>
-        <a th:href="@{/newAdmin}" class="btn btn-primary"> Add new Administrator </a>
+        <form th:action="@{/valStudent}" th:object = "${student}" method="POST" class="p-4" >
+            <fieldset class="p-1">
+                <label>Enter email</label>
+                <input type="text"> 
+            </fieldset>
+            <fieldset class="p-1">
+                <label>Enter password</label>
+                <input type="password" > 
+            </fieldset>
+            <button type="submit" class="btn btn-success"> Login </button> 
+        </form>
         <a th:href="@{/}" class="btn btn-dark"> Sign Out </a>
     </div>
 </body>
