@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student Portal</title>
+</head>
+<body>
+    <div>
+        <h1> Update Admin</h1>
+        <form action="#" th:action="@{/saveA}" th:object = "${admin}" , method="POST">
+            <Fieldset>
+                <input type="hidden" th:field="*{aId}">
+            </Fieldset>
+
+            <Fieldset> 
+            <label>Enter Admin Name</label>
+            <input type="text" th:field="*{aName}" placeholder=" username"> 
+            </Fieldset>
+
+            <Fieldset>
+            <label>Enter Admin Password</label>
+            <input type="text" th:field="*{aPassword}" placeholder="Password"> 
+            </Fieldset>
+
+            <Fieldset>
+            <label>Enter Admin Phone</label>
+            <input type="text" th:field="*{aPhone}" placeholder=" Phone "> 
+            </Fieldset>
+
+            <button type="submit"> Add Admin</button> 
+        </form>
+
+    </div>
+</body>
+</html>

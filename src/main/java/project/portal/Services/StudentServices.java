@@ -42,4 +42,23 @@ public class StudentServices {
         this.stuRepo.deleteById(id); 
         
     }
+
+    
+    // Student login 
+    public String valUser(String email, String Password){
+        
+        List<StudentModel> ls = stuRepo.findAll();
+        String msg = "";  
+        for (StudentModel student : ls) {
+            if(student.getStudentEmail() == email && student.getStudentPassword() == Password){
+            msg ="Valid";
+            }
+            else{
+                msg= "Invalid";  
+            } 
+        }
+        return msg; 
+            
+        };
+    
 }

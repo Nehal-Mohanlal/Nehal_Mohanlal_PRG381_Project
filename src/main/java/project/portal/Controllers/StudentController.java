@@ -15,6 +15,9 @@ import project.portal.Services.AdminServices;
 
 import project.portal.Services.RegisterServices;
 import project.portal.Models.RegisterModel;
+
+import project.portal.Services.Aservices;
+import project.portal.Models.Amodel; 
 //import Repositories.*; 
 //import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,17 +25,32 @@ import project.portal.Models.RegisterModel;
 public class StudentController {
     @Autowired
     private StudentServices stuService;
-    @Autowired
-    private AdminServices adminService;
+    
     @Autowired
     private RegisterServices regServices;
+
+    @Autowired
+    private Aservices aService; 
+
+    
 
     @GetMapping("/")
     public String showStudents(Model model) {
         model.addAttribute("allStudents", stuService.getAllStudents());
         return "index";
-
     }
+
+    @GetMapping(value="/login")
+    public String login(Model model){
+        model.addAttribute("allStudents", stuService.getAllStudents());
+        return "login"; 
+    }
+
+    @PostMapping("/valStudent")
+        public String Valuser(){
+
+            return "redirect:/"; 
+        }
 
     @GetMapping(value = "/newEmpForm")
     public String addNewStudent(Model model) {
@@ -63,28 +81,7 @@ public class StudentController {
         return "redirect:/";
     }
 
-    //////////////// Admin Controllers .//////////////////
-    @GetMapping(value = "/ViewAdmin")
-    public String getAllAdmins(Model model) {
-        model.addAttribute("allAdmins", adminService.getAllAdmins());
-        return "viewAdmins";
-    }
-
-    @GetMapping(value = "/newAdmin")
-    public String addAdmin(Model model) {
-        AdminModel am1 = new AdminModel();
-        model.addAttribute("admin", am1);
-
-        return "addAdmin";
-
-    }
-
-    @PostMapping(value = "/saveAdmin")
-    public String newAdmin(@ModelAttribute("admin") AdminModel adminModel) {
-        adminService.addAdmin(adminModel);
-        return "redirect:/viewAdmins";
-    }
-
+  
     ///////////// RegisteredStudent Controllers /////////////////////////
     @GetMapping(value = "/ViewReg")
     public String viewAllReg(Model model) {
@@ -117,6 +114,41 @@ public class StudentController {
     @GetMapping(value = "/deleteRegStudent/{id}")
     public String deleteRegisteredStudentbyID(@PathVariable(value = "id") long id, Model model) {
         regServices.deleteRegStudent(id);
+        return "redirect:/";
+    }
+
+    ////////////////////// Admin Controllers /////////////////////// 
+    @GetMapping(value = "/ViewAdmin")
+    public String getAllAdmins(Model model) {
+        model.addAttribute("allAdmins", aService.getAllAdmins());
+        return "viewA";
+    }
+
+    @GetMapping(value = "/newAdmin")
+    public String addNewAdmin(Model model) {
+        Amodel a1 = new Amodel(); 
+        model.addAttribute("admin", a1);
+
+        return "addA";
+    }
+
+    @PostMapping(value = "/saveA")
+    public String addAdmin(@ModelAttribute("admin") Amodel a) {
+       aService.addAdmin(a); 
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/updateA/{id}")
+    public String updateAdmin(@PathVariable(value = "id") long id, Model model) {
+        Amodel am1 = new Amodel(); 
+        model.addAttribute("admin", am1);
+
+        return "updateA";
+    }
+
+    @GetMapping(value = "/deleteA/{id}")
+    public String deleteAdmin(@PathVariable(value = "id") long id, Model model) {
+        aService.deleteAdmin(id);
         return "redirect:/";
     }
 }
