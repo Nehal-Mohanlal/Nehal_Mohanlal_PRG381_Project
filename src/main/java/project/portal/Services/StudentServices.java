@@ -28,13 +28,13 @@ public class StudentServices {
     // helper function 
     public StudentModel getStudentByID(Long id){
         Optional<StudentModel> o1 = stuRepo.findById(id); 
-        StudentModel emp = null; 
+        StudentModel stuModel = null; 
         if(o1.isPresent()){
-            emp = o1.get(); 
+            stuModel = o1.get(); 
         }else{
-            throw new RuntimeException("Employee is not found with id + " + id); 
+            throw new RuntimeException("Student is not found with id + " + id); 
         }
-        return emp; 
+        return stuModel; 
     }
 
     // delete student by ID
