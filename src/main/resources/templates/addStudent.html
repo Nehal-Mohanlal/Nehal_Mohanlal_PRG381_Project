@@ -21,7 +21,7 @@
     <div class="justify-content-center text-center p-3">
     
         <h1>Add new Student</h1>
-        <form action="#" th:action="@{/saveStudent}" th:object = "${student}" , method="POST">
+        <form action="#" th:action="@{/saveStudent}" th:object = "${student}" , method="POST" class="p-3">
             <Fieldset class="p-1"> 
             <label>Enter Student Name</label>
             <input type="text" th:field="*{studentFirstName}" placeholder="first name"> 

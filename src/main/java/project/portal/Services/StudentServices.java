@@ -1,4 +1,5 @@
 package project.portal.Services;
+// imports
 import java.util.*;
 
 import javax.transaction.Transactional;
@@ -9,9 +10,12 @@ import org.springframework.stereotype.Service;
 import project.portal.Repositories.StudentRepository;
 import project.portal.Models.*;
 
+///////// Essentially the business logic of the app is stored here and called in the Controller 
+
 @Service
 @Transactional
 public class StudentServices {
+    /// have to instantiate our admin repo to have access to all the CRUD methods in repository
     @Autowired
     private StudentRepository stuRepo; 
 

@@ -1,15 +1,18 @@
 package project.portal.Models;
 
+// imports
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+///////////////////////////////// model for entity "registered Student" /// //// ///
+ 
 @Entity
 @Table(name = "Register")
 public class RegisterModel {
+    // define columns and table data
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long registerId; 
@@ -30,11 +33,12 @@ public class RegisterModel {
     private String regCourseName;
 
 
-    
+    /// empty constructor 
     public RegisterModel(){
 
     }
 
+    /// constructor to initializw values if we wish 
     public RegisterModel(long registerId, String regStudentFirstName, String regStudentLastName, String regStudentEmail,
             String regStudentPassword, String regCourseName) {
         this.registerId = registerId;
@@ -45,6 +49,7 @@ public class RegisterModel {
         this.regCourseName = regCourseName;
     }
 
+    /// getters and setters 
     public long getRegisterId() {
         return registerId;
     }

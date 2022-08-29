@@ -1,5 +1,6 @@
 package project.portal.Controllers;
 
+// imports
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,13 @@ import project.portal.Models.Amodel;
 //import Repositories.*; 
 //import org.springframework.web.bind.annotation.RequestParam;
 
+
+/////////////////////////// This is the main controller that handles all get, post , delete and patch requests  (All rest API methods) ////////// 
+
 @Controller
 public class StudentController {
+
+    // instantiate each entity service 
     @Autowired
     private StudentServices stuService;
     
@@ -32,30 +38,36 @@ public class StudentController {
     @Autowired
     private Aservices aService; 
 
+    // get index page can navigate to all other pages from index
     @GetMapping(value = "/")
     
     public String getMenu(){
         return "index"; 
     }
 
+    // view all students endpoint 
     @GetMapping("/viewStudents")
     public String showStudents(Model model) {
         model.addAttribute("allStudents", stuService.getAllStudents());
         return "viewStudents";
     }
 
+    // login endpoint , sp all users can login 
     @GetMapping(value="/stulogin")
     public String login(Model model){
         model.addAttribute("allStudents", stuService.getAllStudents());
         return "stulogin"; 
     }
 
+    // the actual function for validating student 
     @PostMapping("/valStudent")
         public String Valuser(){
-
+            /// empty because could not implement validation Method for login is in /services/studentservices line 47 
             return "menu"; 
         }
 
+
+    /// end point for getting a new Student 
     @GetMapping(value = "/newStudent")
     public String addNewStudent(Model model) {
         StudentModel s1 = new StudentModel();
@@ -64,6 +76,7 @@ public class StudentController {
         return "addStudent";
     }
 
+    // once student form has been submitted
     @PostMapping(value = "/saveStudent")
     public String addStudent(@ModelAttribute("student") StudentModel studentModel) {
         stuService.addStudent(studentModel);
@@ -71,6 +84,7 @@ public class StudentController {
 
     }
 
+    // update student endpoint 
     @GetMapping(value = "/updateStudent/{id}")
     public String updateStudent(@PathVariable(value = "id") long id, Model model) {
         StudentModel student = stuService.getStudentByID(id);
@@ -79,6 +93,7 @@ public class StudentController {
         return "updateStudent";
     }
 
+    // delete Student endpoint 
     @GetMapping(value = "/deleteStudent/{id}")
     public String deleteStudent(@PathVariable(value = "id") long id, Model model) {
         stuService.deleteStudent(id);
@@ -87,12 +102,15 @@ public class StudentController {
 
   
     ///////////// RegisteredStudent Controllers /////////////////////////
+    
+    // View all registered students from "register" entity in DB  
     @GetMapping(value = "/ViewReg")
     public String viewAllReg(Model model) {
         model.addAttribute("regStudents", regServices.getAllRegisteredStudents());
         return "viewRegisteredStudents";
     }
 
+    // endpoint for adding a new registered student 
     @GetMapping(value = "/newReg")
     public String newReg(Model model) {
         RegisterModel rm1 = new RegisterModel();
@@ -101,6 +119,7 @@ public class StudentController {
         return "addRegisteredStudent";
     }
 
+    
     @PostMapping(value = "/saveReg")
     public String addReg(@ModelAttribute("regStudent") RegisterModel regModel) {
         regServices.newRegisteredStudent(regModel);
@@ -108,6 +127,7 @@ public class StudentController {
 
     }
 
+    // endpoint for updating a registered student 
     @GetMapping(value = "/updateRegStudent/{id}")
     public String updateRegStudent(@PathVariable(value = "id") long id, Model model) {
         RegisterModel rm1 = regServices.getStudentByID(id);
@@ -115,6 +135,7 @@ public class StudentController {
         return "updateRegStudent";
     }
 
+    // endpoint for deleting a registered student 
     @GetMapping(value = "/deleteRegStudent/{id}")
     public String deleteRegisteredStudentbyID(@PathVariable(value = "id") long id, Model model) {
         regServices.deleteRegStudent(id);
@@ -122,12 +143,15 @@ public class StudentController {
     }
 
     ////////////////////// Admin Controllers /////////////////////// 
+
+    // end point for viewing all admins 
     @GetMapping(value = "/ViewAdmin")
     public String getAllAdmins(Model model) {
         model.addAttribute("allAdmins", aService.getAllAdmins());
         return "viewA";
     }
 
+    // end point for adding new admins 
     @GetMapping(value = "/newAdmin")
     public String addNewAdmin(Model model) {
         Amodel a1 = new Amodel(); 
@@ -142,6 +166,7 @@ public class StudentController {
         return "redirect:/";
     }
 
+    // endpoint for updaating admins
     @GetMapping(value = "/updateA/{id}")
     public String updateAdmin(@PathVariable(value = "id") long id, Model model) {
         Amodel am1 = new Amodel(); 
@@ -150,6 +175,7 @@ public class StudentController {
         return "updateA";
     }
 
+    // endpoint for deleting admins
     @GetMapping(value = "/deleteA/{id}")
     public String deleteAdmin(@PathVariable(value = "id") long id, Model model) {
         aService.deleteAdmin(id);

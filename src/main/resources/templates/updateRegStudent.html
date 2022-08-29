@@ -19,7 +19,7 @@
       </nav>
     <div class="justify-content-center text-center p-3">
         <h1>Update a Registered Student</h1>
-        <form action="#" th:action="@{/saveReg}" th:object = "${regStudent}" , method="POST">
+        <form action="#" th:action="@{/saveReg}" th:object = "${regStudent}" , method="POST" class="p-3">
             <Fieldset>
                 <input type="hidden" th:field="*{registerId}">
             </Fieldset>

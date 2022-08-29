@@ -20,7 +20,7 @@
 
     <div class="justify-content-center text-center p-3">
         <h1> Update Admin</h1>
-        <form action="#" th:action="@{/saveA}" th:object = "${admin}" , method="POST">
+        <form action="#" th:action="@{/saveA}" th:object = "${admin}" , method="POST" class="p-3">
             <Fieldset class="p-1">
                 <input type="hidden" th:field="*{aId}">
             </Fieldset>
@@ -39,8 +39,9 @@
             <label>Enter Admin Phone</label>
             <input type="text" th:field="*{aPhone}" placeholder=" Phone "> 
             </Fieldset>
+            <button type="submit" class="p-1"> Update Admin</button> 
         </form>
-        <button type="submit" class="p-1"> Update Admin</button> 
+      
         <a th:href="@{/}" class="btn btn-dark"> Sign Out </a>
     </div>
 </body>

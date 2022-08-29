@@ -1,16 +1,19 @@
 package project.portal.Models;
 
+// imports
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+//////////////// model for entity "Student"//////////////////////
 
 @Entity
 @Table(name = "Students")
 public class StudentModel {
 
+    // define table columns 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long studentId; 
@@ -30,6 +33,7 @@ public class StudentModel {
     @Column(name = "studentPassword")
     private String studentPassword;
 
+    // constructors 
     public StudentModel(){
 
     }
@@ -44,6 +48,7 @@ public class StudentModel {
         this.studentPassword = studentPassword;
     }
 
+    // getters and setters 
     public long getStudentId() {
         return studentId;
     }

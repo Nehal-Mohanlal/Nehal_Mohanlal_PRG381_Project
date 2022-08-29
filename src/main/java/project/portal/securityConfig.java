@@ -1,3 +1,8 @@
+
+
+//////////////////////////// This was used to Configure Security namely Spring Security edietd out because it was giving errors //////////////
+
+
 /* package project.portal;
 
 //import javax.annotation.security.PermitAll;
